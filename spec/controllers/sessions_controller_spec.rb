@@ -38,8 +38,8 @@ RSpec.describe SessionsController, type: :controller do
     end
 
     it "renders the #show view with valid email address" do
-      post :create, session: {email: my_user.email}
-      expect(response).to render_template :show
+      post :create, session: {email: my_user.email, password: my_user.password}
+      expect(response).to redirect_to(root_path)
     end
   end
 
