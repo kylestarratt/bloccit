@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
   it { should have_many(:posts)}
+  it { should have_many(:comments) }
   # Shoulda tests for name
   it { should validate_presence_of(:name) }
   it { should validate_length_of(:name).is_at_least(1) }
@@ -46,20 +47,19 @@ RSpec.describe User, type: :model do
     end
 
   end
-    it "should respond to role" do
-      expect(user).to respond_to(:role)
-    end
+  it "should respond to role" do
+    expect(user).to respond_to(:role)
+  end
 
 
-    it "should respond to admin?" do
-      expect(user).to respond_to(:admin?)
-    end
+  it "should respond to admin?" do
+    expect(user).to respond_to(:admin?)
+  end
 
   # #3
   it "should respond to member?" do
     expect(user).to respond_to(:member?)
   end
-end
 
   describe "roles" do
     it "should be member by default" do
@@ -89,4 +89,7 @@ end
         expect(user.admin?).to be_truthy
       end
     end
+  end
+
+
 end
