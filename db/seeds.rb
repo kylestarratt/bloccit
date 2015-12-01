@@ -14,8 +14,8 @@ users = User.all
 # Create Topics
 15.times do
   Topic.create!(
-  name:         RandomData.random_sentence,
-  description:  RandomData.random_paragraph
+    name:         RandomData.random_sentence,
+    description:  RandomData.random_paragraph
   )
 end
 topics = Topic.all
@@ -24,10 +24,10 @@ topics = Topic.all
 50.times do
   # #1
   Post.create!(
-  user:   users.sample,
-  topic:  topics.sample,
-  title:  RandomData.random_sentence,
-  body:   RandomData.random_paragraph
+    user:   users.sample,
+    topic:  topics.sample,
+    title:  RandomData.random_sentence,
+    body:   RandomData.random_paragraph
   )
 end
 posts = Post.all
@@ -36,10 +36,9 @@ posts = Post.all
 # #3
 100.times do
   Comment.create!(
-  # #4
-  user: users.sample,
-  post: posts.sample,
-  body: RandomData.random_paragraph
+    user: users.sample,
+    post: posts.sample,
+    body: RandomData.random_paragraph
   )
 end
 
