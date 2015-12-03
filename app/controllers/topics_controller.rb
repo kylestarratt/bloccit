@@ -21,6 +21,7 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new(topic_params)
+    @topic.rating = Rating.send(params[:topic][:rating])
 
     if @topic.save
       @topic.labels = Label.update_labels(params[:topic][:labels])
