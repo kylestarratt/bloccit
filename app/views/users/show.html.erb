@@ -19,8 +19,13 @@
   </div>
 </div>
 
-<h2>Posts</h2>
+<%= check_for_something('posts') %>
 <%= render @user.posts %>
-
-<h2>Comments</h2>
+<hr>
+<%= check_for_something('comments') %>
 <%= render @user.comments %>
+<hr>
+<%= check_for_something('favorites') %>
+<% @user.favorites.each do |f| %>
+  <%= render partial: '/posts/post', locals: {post: f.post} %>
+<% end %>
