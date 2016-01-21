@@ -26,6 +26,14 @@ class User < ActiveRecord::Base
 
   enum role: [:member, :admin]
 
+  def self.update_user_auth_tokens
+    User.all.each do |u|
+      next if u.auth_token.present?
+      u.generate_auth_token
+      u.save
+    end
+  end
+
   def favorite_for(post)
     favorites.where(post_id: post.id).first
   end

@@ -43,6 +43,17 @@ class Api::V1::TopicsController < Api::V1::BaseController
      end
    end
 
+   def create_post
+     @topic = Topic.new(topic_params)
+
+     if @topic.save
+       @topic.labels = Label.update_labels(params[:topic][:labels])
+       redirect_to @topic, notice: "Topic was saved successfully."
+     else
+       render json: topic.to_json, status: 201
+     end
+   end
+
    private
    def topic_params
      params.require(:topic).permit(:name, :description, :public)
