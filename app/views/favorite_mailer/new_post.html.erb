@@ -6,7 +6,7 @@
   <body>
     <h1>Now you are following "<%= @post.title %>", if you dont want to get any more emails, please unfavorite <%= link_to "post", topic_post_url(@post.topic, @post) %>.</h1>
     <p>
-      <%= @comment.body %>
+      <%= @post.body %>
     </p>
     <p>
       <%= link_to "View Post on site", topic_post_url(@post.topic, @post) %>
